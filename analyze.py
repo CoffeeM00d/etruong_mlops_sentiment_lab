@@ -24,8 +24,8 @@ def update_email(NEW_CLASSES):
 
     update_class_embeddings = compute_embed(EMAIL_CLASSES)
     # print("Updated Embeddings:", update_class_embeddings)
-    print("New class to add:", NEW_CLASSES)
-    print("Updated EMAIL_CLASSES:", EMAIL_CLASSES)
+    # print("New class to add:", NEW_CLASSES)
+    # print("Updated EMAIL_CLASSES:", EMAIL_CLASSES)
     if update_class_embeddings is None:
         update_class_embeddings = {}
     return update_class_embeddings
