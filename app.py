@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify, render_template
-from analyze import get_sentiment, compute_embeddings, classify_email
+from analyze import get_sentiment, compute_embeddings, classify_email, update_email
+
 app = Flask(__name__, template_folder='templates')
+
 
 @app.route("/")
 def home():
@@ -47,6 +49,19 @@ def classify_with_get():
     text = request.args.get('text')
     classifications = classify_email(text)
     return jsonify({"message": "Email classified", "classifications": classifications}), 200
+
+
+# Update user input classes via API.
+@app.route("/api/v1/update-email/", methods=['POST'])
+def update_class():
+    if request.is_json:
+        data = request.get_json()
+        text = data['text']
+        update_text = update_email(text)
+        return jsonify({"message": f"Class '{text}' has been updated",
+                        "updated-text": list(update_text.keys())}), 200
+    else:
+        return jsonify({"error": f"Failed to update class '{text}'"}), 400
 
 
 if __name__ == "__main__":
