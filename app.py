@@ -3,7 +3,6 @@ from analyze import get_sentiment, compute_embeddings, classify_email, update_em
 
 app = Flask(__name__, template_folder='templates')
 
-
 @app.route("/")
 def home():
     print("Home page")
