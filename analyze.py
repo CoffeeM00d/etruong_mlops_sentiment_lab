@@ -9,7 +9,6 @@ EMAIL_CLASSES = [
     "Work", "Sports", "Food"
 ]
 
-
 def get_sentiment(text):
     response = sentiment_pipeline(text)
     return response
